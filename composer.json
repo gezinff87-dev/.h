@@ -1,5 +1,14 @@
 {
+    "name": "advogada/site-profissional",
+    "description": "Site profissional para advogada",
+    "type": "project",
     "require": {
         "php": "^8.0"
+    },
+    "require-dev": {
+        "ext-json": "*"
+    },
+    "scripts": {
+        "start": "php -S 0.0.0.0:8000"
     }
 }

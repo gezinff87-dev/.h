@@ -309,17 +309,20 @@
             margin-bottom: 20px;
             text-align: center;
             display: none;
+            transition: all 0.5s ease;
         }
 
         .form-message.success {
             background-color: #d4edda;
             color: #155724;
+            border: 1px solid #c3e6cb;
             display: block;
         }
 
         .form-message.error {
             background-color: #f8d7da;
             color: #721c24;
+            border: 1px solid #f5c6cb;
             display: block;
         }
 
@@ -392,6 +395,31 @@
             opacity: 0.8;
         }
 
+        /* WhatsApp Fixo */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
         /* Responsividade */
         @media (max-width: 992px) {
             .about-container {
@@ -440,6 +468,14 @@
             section {
                 padding: 60px 0;
             }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 20px;
+                right: 20px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -485,13 +521,23 @@
         </div>
     </header>
 
+    <!-- WhatsApp Fixo -->
+    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de agendar uma consulta." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
                 <h1>Dra. Sofia Mendes</h1>
                 <p>Advogada especializada em Direito Civil e Família, com mais de 15 anos de experiência oferecendo soluções jurídicas personalizadas e eficientes para proteger seus direitos e interesses.</p>
-                <a href="#contato" class="btn btn-secondary">Agende uma Consulta</a>
+                <div class="hero-buttons">
+                    <a href="#contato" class="btn btn-secondary">Agende uma Consulta</a>
+                    <a href="tel:+5511999999999" class="btn" style="margin-left: 15px; background: transparent; border: 2px solid white;">
+                        <i class="fas fa-phone"></i> Ligar Agora
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -549,6 +595,17 @@
                     <p>Dra. Sofia Mendes é formada em Direito pela Universidade de São Paulo (USP) e pós-graduada em Direito Civil e Processo Civil. Com mais de 15 anos de atuação, já ajudou centenas de clientes a resolverem suas questões jurídicas com êxito.</p>
                     <p>Membro ativa da Ordem dos Advogados do Brasil (OAB/SP) e da Associação dos Advogados de São Paulo, mantém-se constantemente atualizada através de cursos e participação em congressos da área jurídica.</p>
                     <p>Sua abordagem combina conhecimento técnico aprofundado com atenção personalizada a cada cliente, buscando sempre as melhores soluções de forma ética e eficiente.</p>
+                    
+                    <div class="credentials">
+                        <p><strong>Credenciais:</strong></p>
+                        <ul style="margin-left: 20px; margin-bottom: 20px;">
+                            <li>OAB/SP 123.456</li>
+                            <li>Pós-graduada em Direito Civil - USP</li>
+                            <li>Mestranda em Direito Processual Civil</li>
+                            <li>Especialização em Mediação de Conflitos</li>
+                        </ul>
+                    </div>
+                    
                     <a href="#contato" class="btn">Entre em Contato</a>
                 </div>
             </div>
@@ -574,7 +631,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="telefone">Telefone *</label>
+                            <label for="telefone">Telefone/WhatsApp *</label>
                             <input type="tel" id="telefone" name="telefone" class="form-control" required>
                         </div>
                     </div>
@@ -599,10 +656,17 @@
                     
                     <div class="form-group">
                         <label for="mensagem">Mensagem *</label>
-                        <textarea id="mensagem" name="mensagem" class="form-control" required></textarea>
+                        <textarea id="mensagem" name="mensagem" class="form-control" placeholder="Descreva brevemente sua situação jurídica..." required></textarea>
                     </div>
                     
-                    <button type="submit" class="btn btn-secondary" id="submitBtn">Enviar Mensagem</button>
+                    <div class="form-group" style="font-size: 0.9rem; color: #666;">
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <label for="privacy">Concordo com a Política de Privacidade e autorizo o contato.</label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-secondary" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                    </button>
                 </form>
             </div>
         </div>
@@ -615,28 +679,39 @@
                 <div class="footer-about">
                     <div class="footer-logo">Dra. Sofia Mendes</div>
                     <p>Advocacia especializada com compromisso, ética e excelência jurídica para defender seus direitos e interesses.</p>
+                    <p style="margin-top: 15px;"><i class="fas fa-award"></i> OAB/SP 123.456</p>
                 </div>
                 
                 <div class="footer-contact">
                     <h3>Contato</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo/SP</p>
                     <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
-                    <p><i class="fas fa-envelope"></i> contato@drasofiamendes.com.br</p>
+                    <p><i class="fas fa-envelope"></i> contato@drasofiamendes.com</p>
+                    <p><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h</p>
                 </div>
                 
                 <div class="footer-social">
                     <h3>Redes Sociais</h3>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/5511999999999" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    
+                    <div style="margin-top: 25px;">
+                        <h3>Atendimento</h3>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">
+                            Presencial, online e por telefone.
+                            Primeira consulta gratuita.
+                        </p>
                     </div>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Dra. Sofia Mendes - Advogada. Todos os direitos reservados. OAB/SP 123.456</p>
+                <p>&copy; 2024 Dra. Sofia Mendes - Advogada. Todos os direitos reservados.</p>
+                <p style="margin-top: 5px; font-size: 0.8rem;">OAB/SP 123.456 - Este site é apenas para fins informativos.</p>
             </div>
         </div>
     </footer>
@@ -661,42 +736,54 @@
             });
         });
         
-        // Formulário de contato
+        // Formulário de contato - ATUALIZADO PARA RENDER.COM
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const submitBtn = document.getElementById('submitBtn');
             const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = 'Enviando...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
             submitBtn.disabled = true;
             
             const formData = new FormData(this);
             const formMessage = document.getElementById('formMessage');
+            formMessage.style.display = 'block';
             
             try {
-                // Aqui você substituiria pela URL do seu script PHP
+                // URL do arquivo PHP no Render.com
                 const response = await fetch('enviar.php', {
-                method: 'POST',
-                body: formData
-           }).then(res => res.json());
+                    method: 'POST',
+                    body: formData
+                });
                 
-                if (response.success) {
-                    formMessage.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                const result = await response.json();
+                
+                if (result.success) {
+                    formMessage.textContent = result.message;
                     formMessage.className = 'form-message success';
                     document.getElementById('contactForm').reset();
                 } else {
-                    throw new Error('Erro ao enviar mensagem');
+                    throw new Error(result.message || 'Erro desconhecido');
                 }
             } catch (error) {
-                formMessage.textContent = 'Erro ao enviar mensagem. Por favor, tente novamente ou entre em contato diretamente pelo telefone.';
-                formMessage.className = 'form-message error';
                 console.error('Erro:', error);
+                formMessage.textContent = error.message || 'Erro ao enviar mensagem. Por favor, entre em contato diretamente pelo WhatsApp.';
+                formMessage.className = 'form-message error';
             } finally {
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
                 
-                // Rolar para a mensagem
+                // Rolar suavemente para a mensagem
                 formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Auto-esconder mensagem após 8 segundos
+                setTimeout(() => {
+                    formMessage.style.opacity = '0';
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                        formMessage.style.opacity = '1';
+                    }, 500);
+                }, 8000);
             }
         });
         
@@ -720,6 +807,35 @@
                 }
             });
         });
+        
+        // Máscara para telefone
+        const telefoneInput = document.getElementById('telefone');
+        telefoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 10) {
+                value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+            } else if (value.length > 6) {
+                value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+            } else if (value.length > 2) {
+                value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+            } else if (value.length > 0) {
+                value = value.replace(/^(\d*)/, '($1');
+            }
+            
+            e.target.value = value;
+        });
+        
+        // Atualizar ano do copyright
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearSpan = document.querySelector('.copyright p');
+            if (yearSpan) {
+                yearSpan.innerHTML = yearSpan.innerHTML.replace('2024', new Date().getFullYear());
+            }
+            
+            // Inicializar telefone com placeholder formatado
+            telefoneInput.placeholder = '(11) 99999-9999';
+        });
     </script>
 </body>
-</html>
+    </html>
